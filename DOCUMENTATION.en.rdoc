@@ -166,8 +166,8 @@
 
 === Example of Rule Section Definition
 
-        {REMIN}                 { state = :REM ; [:REM_IN, text] }
-  :REM  {REMOUT}                { state = nil ; [:REM_OUT, text] }
+        {REMIN}                 { self.state = :REM ; [:REM_IN, text] }
+  :REM  {REMOUT}                { self.state = nil ; [:REM_OUT, text] }
   :REM  (.+)(?={REMOUT})        { [:COMMENT, text] }
         {BLANK}
         -?{DIGIT}               { [:NUMBER, text.to_i] }

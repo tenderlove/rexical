@@ -16,8 +16,8 @@ macro
   REMARK        \'              # '
 
 rule
-                {REMARK}        { state = :REM;  [:rem_in, text] } # '
-  :REM          \n              { state = nil;   [:rem_out, text] }
+                {REMARK}        { self.state = :REM;  [:rem_in, text] } # '
+  :REM          \n              { self.state = nil;   [:rem_out, text] }
   :REM          .*(?=$)         {                [:remark, text] }
 
                 \"[^"]*\"       { [:string, text] } # "

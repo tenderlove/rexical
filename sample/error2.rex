@@ -11,5 +11,5 @@ rule
   \d+           { [:digit, text.to_i] }
   \w+           { [:word, text] }
   \n
-  .             { state = :NONDEF ; [text, text] }
+  .             { self.state = :NONDEF ; [text, text] }
 end
