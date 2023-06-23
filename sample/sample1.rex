@@ -19,11 +19,11 @@ rule
 # [:state]  pattern  [actions]
 
 # remark
-                {REM_IN}        { state = :REMS; [:rem_in, text] }
-  :REMS         {REM_OUT}       { state = nil;   [:rem_out, text] }
+                {REM_IN}        { self.state = :REMS; [:rem_in, text] }
+  :REMS         {REM_OUT}       { self.state = nil;   [:rem_out, text] }
   :REMS         .*(?={REM_OUT}) {                [:remark, text] }
-                {REM}           { state = :REM;  [:rem_in, text] }
-  :REM          \n              { state = nil;   [:rem_out, text] }
+                {REM}           { self.state = :REM;  [:rem_in, text] }
+  :REM          \n              { self.state = nil;   [:rem_out, text] }
   :REM          .*(?=$)         {                [:remark, text] }
 
 # literal
